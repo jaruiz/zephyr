@@ -1,0 +1,32 @@
+menuconfig UART_MICRO5
+	bool "Driver for Micro5 mini-UART"
+	select SERIAL_HAS_DRIVER
+	select SERIAL_SUPPORT_INTERRUPT
+	help
+	  This option enables the Micro5-UART serial driver.
+
+# ---------- Port 0 ----------
+
+menuconfig UART_MICRO5_PORT_0
+	bool "Enable Micro5-UART Port 0 (the only port by default)"
+	depends on UART_MICRO5
+	help
+	  This tells the driver to configure the UART port at boot, depending on
+	  the additional configure options below.
+
+config UART_MICRO5_PORT_0_NAME
+	string "Port 0 Device Name"
+	default "uart0"
+	depends on UART_MICRO5_PORT_0
+	help
+	  This is the device name for UART, and is included in the device
+	  struct.
+
+config UART_MICRO5_PORT_0_BAUD_RATE
+	int "Port 0 Baud Rate"
+	default 0
+	depends on UART_MICRO5_PORT_0
+	help
+	  The baud rate for UART port to be set to at boot.
+
+	  Leave at 0 to skip initialization.
