@@ -1,0 +1,79 @@
+if SOC_RISCV32_MICRO5
+
+config SOC
+	string
+	default "micro5"
+
+config SYS_CLOCK_HW_CYCLES_PER_SEC
+	int
+	default 4000000
+
+config RISCV_SOC_CONTEXT_SAVE
+	bool
+	default n
+
+config RISCV_SOC_INTERRUPT_INIT
+	bool
+	default y
+
+config RISCV_HAS_CPU_IDLE
+	bool
+	default y
+
+config INCLUDE_RESET_VECTOR
+	bool
+	default y
+
+config NUM_IRQS
+	int
+	default 8
+
+config MICRO5_ROM_BASE_ADDRESS
+	hex
+	default	0x00000000
+
+config MICRO5_ROM_SIZE
+	hex
+	default 0x8000
+
+config MICRO5_RAM_BASE_ADDRESS
+	hex
+	default 0x00010000
+
+config MICRO5_RAM_SIZE
+	hex
+	default 0x4000
+
+
+if MICRO5_TIMER
+
+config MICRO5_TIMER_BASE
+	hex
+	default 0x10000100
+
+config MICRO5_TIMER_IRQ
+	int
+	default 0
+
+
+endif # MICRO5_TIMER
+
+
+if UART_MICRO5
+
+config UART_MICRO5_BASE
+	hex
+	default 0x10000000
+
+config UART_MICRO5_PORT_0_NAME
+	string
+	default "uart0"
+
+config UART_MICRO5_PORT_0_BAUD_RATE
+	int
+	default 115200
+
+endif # UART_MICRO5
+
+
+endif # SOC_RISCV32_MICRO5

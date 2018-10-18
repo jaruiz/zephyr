@@ -1,0 +1,4 @@
+config SOC_RISCV32_MICRO5
+	bool "SoC implementation around micro5 RISC-V"
+	select ATOMIC_OPERATIONS_C
+	select CONFIG_RISCV_GENERIC_TOOLCHAIN
