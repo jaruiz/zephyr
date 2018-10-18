@@ -1,0 +1,9 @@
+# Kconfig.micro5 - Config options for Micro5 GPIO
+#
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig GPIO_MICRO5
+	bool "Micro5 GPIO driver"
+	depends on GPIO && CONFIG_SOC_RISCV32_MICRO5
+	help
+	  Enable support for the Micro5 GPIO controllers.

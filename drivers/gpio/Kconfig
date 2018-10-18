@@ -76,6 +76,8 @@ source "drivers/gpio/Kconfig.sam"
 
 source "drivers/gpio/Kconfig.sx1509b"
 
+source "drivers/gpio/Kconfig.micro5"
+
 source "drivers/gpio/Kconfig.imx"
 
 endif # GPIO
