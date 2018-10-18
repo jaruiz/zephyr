@@ -1,0 +1,12 @@
+identifier: ice40up5k_micro5
+name: iCE40UP5K micro5
+type: mcu
+arch: riscv32
+toolchain:
+  - zephyr
+ram: 16
+flash: 32
+testing:
+  ignore_tags:
+    - net
+    - bluetooth

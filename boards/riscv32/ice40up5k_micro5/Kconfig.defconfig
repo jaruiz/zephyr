@@ -1,0 +1,10 @@
+if BOARD_ICE40UP5K_MICRO5
+
+config BOARD
+	default "ice40up5k_micro5"
+
+config GPIO_MICRO5
+	def_bool y
+
+
+endif

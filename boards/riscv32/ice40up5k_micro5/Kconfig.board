@@ -1,0 +1,5 @@
+
+config BOARD_ICE40UP5K_MICRO5
+	bool "iCE40UP5K-B-EVN micro5 RISC-V target"
+	depends on SOC_RISCV32_MICRO5
+
