@@ -1,126 +1,85 @@
+Zephyr fork (v1.13-branch) -- port for micro5 core
+==================================================
 
-.. raw:: html
+This fork of Zephyr is a port of branch `v1.13-branch` for the RISC-V micro5_ core, which is meant to be an entrant in the `RISC-V SoftCPU Contest 2018`_.
 
-   <a href="https://www.zephyrproject.org">
-     <p align="center">
-       <img src="doc/images/Zephyr-Project.png">
-     </p>
-   </a>
+A copy of the original README file for the repository has been preserved_ as a reference. This README file only contains information relevant to the micro5_ port.
 
-   <a href="https://bestpractices.coreinfrastructure.org/projects/74"><img
-   src="https://bestpractices.coreinfrastructure.org/projects/74/badge"></a>
-   <img
-   src="https://api.shippable.com/projects/58ffb2b8baa5e307002e1d79/badge?branch=master">
+Status summary
+==============
 
+The whole port is little more than a placeholder at the time of writing this. The features of the acutal hardware have not been defined yet. In fact, I am in the process of finding out what's the minimum set of features the SoC needs to support in order to meet the requirements of `the contest`_ and that will take some experimentation.
 
-The Zephyr Project is a scalable real-time operating system (RTOS) supporting
-multiple hardware architectures, optimized for resource constrained devices,
-and built with security in mind.
-
-The Zephyr OS is based on a small-footprint kernel designed for use on
-resource-constrained systems: from simple embedded environmental sensors and
-LED wearables to sophisticated smart watches and IoT wireless gateways.
-
-The Zephyr kernel supports multiple architectures, including ARM Cortex-M,
-Intel x86, ARC, Nios II, Tensilica Xtensa, and RISC-V, and a large number of
-`supported boards`_.
-
-.. below included in doc/introduction/introduction.rst
-
-.. start_include_here
-
-Getting Started
-***************
-
-To start developing Zephyr applications refer to the `Getting Started Guide`_
-in the `Zephyr Documentation`_ pages.
-A brief introduction to Zephyr can be found in the  `Zephyr Introduction`_
-page.
-
-Community Support
-*****************
-
-The Zephyr Project Developer Community includes developers from member
-organizations and the general community all joining in the development of
-software within the Zephyr Project. Members contribute and discuss ideas,
-submit bugs and bug fixes, and provide training. They also help those in need
-through the community's forums such as mailing lists and IRC channels. Anyone
-can join the developer community and the community is always willing to help
-its members and the User Community to get the most out of the Zephyr Project.
-
-Welcome to the Zephyr community!
-
-Resources
-*********
-
-Here's a quick summary of resources to find your way around the Zephyr Project
-support systems:
-
-* **Zephyr Project Website**: The https://zephyrproject.org website is the
-  central source of information about the Zephyr Project. On this site, you'll
-  find background and current information about the project as well as all the
-  relevant links to project material.
-
-* **Releases**: Source code for Zephyr kernel releases are available at
-  https://zephyrproject.org/developers/#downloads. On this page,
-  you'll find release information, and links to download or clone source
-  code from our GitHub repository.  You'll also find links for the Zephyr
-  SDK, a moderated collection of tools and libraries used to develop your
-  applications.
-
-* **Source Code in GitHub**: Zephyr Project source code is maintained on a
-  public GitHub repository at https://github.com/zephyrproject-rtos/zephyr.
-  You'll find information about getting access to the repository and how to
-  contribute to the project in this `Contribution Guide`_ document.
-
-* **Samples Code**: In addition to the kernel source code, there are also
-  many documented `Sample and Demo Code Examples`_ that can help show you
-  how to use Zephyr services and subsystems.
-
-* **Documentation**: Extensive Project technical documentation is developed
-  along with the Zephyr kernel itself, and can be found at
-  http://docs.zephyrproject.org.  Additional documentation is maintained in
-  the `Zephyr GitHub wiki`_.
-
-* **Cross-reference**: Source code cross-reference for the Zephyr
-  kernel and samples code is available at
-  https://elixir.bootlin.com/zephyr/latest/source.
-
-* **Issue Reporting and Tracking**: Requirements and Issue tracking is done in
-  the Github issues system: https://github.com/zephyrproject-rtos/zephyr/issues.
-  You can browse through the reported issues and submit issues of your own.
-
-* **Security-related Issue Reporting and Tracking**: For security-related
-  inquiries or reporting suspected security-related bugs in the Zephyr OS,
-  please send email to vulnerabilities@zephyrproject.org.  We will assess and
-  fix flaws according to our security policy outlined in the Zephyr Project
-  `Security Overview`_.
-
-  Security related issue tracking is done in JIRA.  The location of this JIRA
-  is https://zephyrprojectsec.atlassian.net.
-
-* **Mailing List**: The `Zephyr Development mailing list`_ is perhaps the most convenient
-  way to track developer discussions and to ask your own support questions to
-  the Zephyr project community.  There are also specific `Zephyr mailing list
-  subgroups`_ for announcements, builds, marketing, and Technical
-  Steering Committee notes, for example.
-  You can read through the message archives to follow
-  past posts and discussions, a good thing to do to discover more about the
-  Zephyr project.
-
-* **IRC Chatting**: You can chat online with the Zephyr project developer
-  community and other users in our IRC channel #zephyrproject on the
-  freenode.net IRC server. You can use the http://webchat.freenode.net web
-  client or use a client-side application such as pidgin.
+A few applications can be `built and run on a custom iss`_ using this Zephyr port. This custom iss is an ad-hoc `basic risc-v simulator`_ specifically built to help me experiment with the ISA and the OS. So far none of this has met any real or simulated hardware.
 
 
-.. _supported boards: http://docs.zephyrproject.org/boards/boards.html
-.. _Zephyr Documentation: http://docs.zephyrproject.org
-.. _Zephyr Introduction: http://docs.zephyrproject.org/introduction/introducing_zephyr.html
-.. _Getting Started Guide: http://docs.zephyrproject.org/getting_started/getting_started.html
-.. _Contribution Guide: http://docs.zephyrproject.org/contribute/contribute_guidelines.html
-.. _Zephyr GitHub wiki: https://github.com/zephyrproject-rtos/zephyr/wiki
-.. _Zephyr Development mailing list: https://lists.zephyrproject.org/g/devel
-.. _Zephyr mailing list subgroups: https://lists.zephyrproject.org/g/main/subgroups
-.. _Sample and Demo Code Examples: http://docs.zephyrproject.org/samples/samples.html
-.. _Security Overview: http://docs.zephyrproject.org/security/security-overview.html
+New SoCs and boards
+===================
+
+The micro5_ core is just an implementation of the :code:`rv32i` ISA so it uses the existing support for `riscv32` in Zephyr.
+
+It's been necessary to port a new *SoC* under the :code:`riscv32` architecture, plus a new *board* using the new SoC:
+
++------------+--------------------+----------------------------------+
+| New...     | Name               | Location                         |
++============+====================+==================================+
+| SoC        | micro5             | arch/riscv32/soc/micro5          |
++------------+--------------------+----------------------------------+
+| Board      | ice40up5k_micro5   | boards/riscv32/ice40up5k_micro5  |
++------------+--------------------+----------------------------------+
+
+
+Board :code:`ice40up5k_micro5` targets Lattice's `iCE40 UltraPlus Breakout Board`_. Other board targets may be added eventually built around the same SoC support.
+
+Eventually, all the *soc* and *board* configuration symbols will be documented here or somewhere else.
+
+
+New drivers
+===========
+
+Apart from the support for the new :code:`soc` and :code:`board` entities, the port includes a number of *drivers*: 
+
+
++------------+--------------------+----------------------------------------+
+| New...     | Root config name   | New and modified files                 |
++============+====================+========================================+
+| serial     | UART_MICRO5        | :code:`drivers/serial/Kconfig.micro5`  |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/serial/uart_micro5.c`   |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/serial/Kconfig`         |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/serial/CMakeLists.txt`  |
++------------+--------------------+----------------------------------------+
+| timer      | MICRO5_TIMER       | :code:`drivers/timer/micro5_timer.c`   |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/timer/Kconfig`          |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/timer/CMakeLists.txt`   |
++------------+--------------------+----------------------------------------+
+| gpio       | GPIO_MICRO5        | :code:`drivers/gpio/Kconfig.micro5`    |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/gpio/gpio_micro5.c`     |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/gpio/Kconfig`           |
++            +                    +----------------------------------------+
+|            |                    | :code:`drivers/gpio/CMakeLists.txt`    |
++------------+--------------------+----------------------------------------+
+
+All the drivers have been created by mimicking existing drivers. The API is implemented to the extent it is necessary to execute the `few code samples` I have been experimenting with. Like everything else this is a work in progress.
+
+
+Caveats
+=======
+
+This fork has been made exclusively for the SoftCPU contest. I think it goes without saying that this code is not meant to ever become a part of the main Zephyr repository. Thus, although I have tried to follow the style guidelines and have strived to make new code as much alike old code as possible, it should be remembered that this is little more than a supporting act for the main show: the hardware.
+
+
+
+.. _preserved: https://github.com/jaruiz/zephyr/blob/v1.13-branch/README.original.rst
+.. _micro5: https://github.com/jaruiz/micro5
+.. _`RISC-V SoftCPU Contest 2018`: https://riscv.org/2018contest/
+.. _`the contest`: https://riscv.org/2018contest/
+.. _`iCE40 UltraPlus Breakout Board`: http://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/iCE40UltraPlusBreakoutBoard
+.. _`built and run on a custom iss`: https://github.com/jaruiz/micro5sim#running-zephyr-code-samples
+.. _`basic risc-v simulator`: https://github.com/jaruiz/micro5sim
